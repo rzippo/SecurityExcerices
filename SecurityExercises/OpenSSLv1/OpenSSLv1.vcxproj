@@ -62,31 +62,103 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <IncludePath>D:\Users\Raff\OneDrive\PuTTY\include\x86_64-linux-gnu;D:\Users\Raff\OneDrive\PuTTY\include</IncludePath>
+    <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
+    <RemoteCppCompileToolExe />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <IncludePath>D:\Users\Raff\OneDrive\PuTTY\include\x86_64-linux-gnu;D:\Users\Raff\OneDrive\PuTTY\include</IncludePath>
+    <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
+    <RemoteCppCompileToolExe />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>D:\Users\Raff\OneDrive\PuTTY\include\x86_64-linux-gnu;D:\Users\Raff\OneDrive\PuTTY\include</IncludePath>
+    <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
+    <RemoteCppCompileToolExe />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>D:\Users\Raff\OneDrive\PuTTY\include\x86_64-linux-gnu;D:\Users\Raff\OneDrive\PuTTY\include</IncludePath>
+    <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
+    <RemoteCppCompileToolExe />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <IncludePath>D:\Users\Raff\OneDrive\PuTTY\include\x86_64-linux-gnu;D:\Users\Raff\OneDrive\PuTTY\include</IncludePath>
+    <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
+    <RemoteCppCompileToolExe />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <IncludePath>D:\Users\Raff\OneDrive\PuTTY\include\x86_64-linux-gnu;D:\Users\Raff\OneDrive\PuTTY\include</IncludePath>
+    <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
+    <RemoteCppCompileToolExe />
   </PropertyGroup>
   <ItemGroup>
     <ClCompile Include="main.c" />
+    <ClCompile Include="SSLTransfer.c" />
     <ClCompile Include="tcpSetup.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SSLFileTransfer.h" />
+    <ClInclude Include="SSLTransfer.h" />
     <ClInclude Include="tcpSetup.h" />
   </ItemGroup>
-  <ItemDefinitionGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
+    <ClCompile>
+      <AdditionalOptions>-lcrypto </AdditionalOptions>
+      <CppLanguageStandard>Default</CppLanguageStandard>
+      <CompileAs>CompileAsC</CompileAs>
+      <ThreadSafeStatics>No</ThreadSafeStatics>
+      <ExceptionHandling>Disabled</ExceptionHandling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
+    <ClCompile>
+      <AdditionalOptions>-lcrypto </AdditionalOptions>
+      <CppLanguageStandard>Default</CppLanguageStandard>
+      <CompileAs>CompileAsC</CompileAs>
+      <ThreadSafeStatics>No</ThreadSafeStatics>
+      <ExceptionHandling>Disabled</ExceptionHandling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalOptions>-lcrypto </AdditionalOptions>
+      <CppLanguageStandard>Default</CppLanguageStandard>
+      <CompileAs>CompileAsC</CompileAs>
+      <ThreadSafeStatics>No</ThreadSafeStatics>
+      <ExceptionHandling>Disabled</ExceptionHandling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalOptions>-lcrypto </AdditionalOptions>
+      <CppLanguageStandard>Default</CppLanguageStandard>
+      <CompileAs>CompileAsC</CompileAs>
+      <ThreadSafeStatics>No</ThreadSafeStatics>
+      <ExceptionHandling>Disabled</ExceptionHandling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <ClCompile>
+      <AdditionalOptions>-lcrypto </AdditionalOptions>
+      <CppLanguageStandard>Default</CppLanguageStandard>
+      <CompileAs>CompileAsC</CompileAs>
+      <ThreadSafeStatics>No</ThreadSafeStatics>
+      <ExceptionHandling>Disabled</ExceptionHandling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <ClCompile>
+      <AdditionalOptions>-lcrypto </AdditionalOptions>
+      <CppLanguageStandard>Default</CppLanguageStandard>
+      <CompileAs>CompileAsC</CompileAs>
+      <ThreadSafeStatics>No</ThreadSafeStatics>
+      <ExceptionHandling>Disabled</ExceptionHandling>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>

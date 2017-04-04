@@ -8,7 +8,7 @@
 #include <arpa/inet.h>
 #include <sys/socket.h>
 
-void errorCheck(int ret)
+static void errorCheck(int ret)
 {
 	if (ret == -1)
 	{
