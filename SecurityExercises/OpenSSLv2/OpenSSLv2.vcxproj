@@ -27,9 +27,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{4ccfd7cd-d3d9-4d13-ac56-509620c66b08}</ProjectGuid>
+    <ProjectGuid>{99B55F5B-C062-4059-BC7D-888DB8E89984}</ProjectGuid>
     <Keyword>Linux</Keyword>
-    <RootNamespace>OpenSSLv1</RootNamespace>
+    <RootNamespace>OpenSSLv2</RootNamespace>
     <MinimumVisualStudioVersion>15.0</MinimumVisualStudioVersion>
     <ApplicationType>Linux</ApplicationType>
     <ApplicationTypeRevision>1.0</ApplicationTypeRevision>

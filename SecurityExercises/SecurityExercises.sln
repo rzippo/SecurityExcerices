@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OTPBreaking", "OTPBreaking\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenSSLv1", "OpenSSLv1\OpenSSLv1.vcxproj", "{4CCFD7CD-D3D9-4D13-AC56-509620C66B08}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenSSLv2", "OpenSSLv2\OpenSSLv2.vcxproj", "{99B55F5B-C062-4059-BC7D-888DB8E89984}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -39,6 +41,18 @@ Global
 		{4CCFD7CD-D3D9-4D13-AC56-509620C66B08}.Release|x64.Build.0 = Release|x64
 		{4CCFD7CD-D3D9-4D13-AC56-509620C66B08}.Release|x86.ActiveCfg = Release|x86
 		{4CCFD7CD-D3D9-4D13-AC56-509620C66B08}.Release|x86.Build.0 = Release|x86
+		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Debug|ARM.ActiveCfg = Debug|ARM
+		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Debug|ARM.Build.0 = Debug|ARM
+		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Debug|x64.ActiveCfg = Debug|x64
+		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Debug|x64.Build.0 = Debug|x64
+		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Debug|x86.ActiveCfg = Debug|x86
+		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Debug|x86.Build.0 = Debug|x86
+		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Release|ARM.ActiveCfg = Release|ARM
+		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Release|ARM.Build.0 = Release|ARM
+		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Release|x64.ActiveCfg = Release|x64
+		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Release|x64.Build.0 = Release|x64
+		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Release|x86.ActiveCfg = Release|x86
+		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
