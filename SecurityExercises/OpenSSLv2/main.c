@@ -97,7 +97,8 @@ int clientMain(short serverPort, char* inputFilename)
 	fstat(inputFile, &st);
 	unsigned inputSize = (unsigned) st.st_size;
 
-	encrypt(inputFile, outEncryptedFile, inputSize, 1, encryptionKey, iv);
+	encrypt(inputFile, outEncryptedFile, inputSize, 4, encryptionKey, iv);
+	lseek(outEncryptedFile, 0, SEEK_SET);
 
 	//Send to the server the number of blocks to be received
 	fstat(outEncryptedFile, &st);
@@ -114,7 +115,7 @@ int clientMain(short serverPort, char* inputFilename)
 		hmacKey[i] = (unsigned char) ((int)'a' + i);
 	}
 
-	hmacSend(outEncryptedFile, communicationSocket, encryptedSize, 1, hmacKey, 128/8);
+	hmacSend(outEncryptedFile, communicationSocket, encryptedSize, 4, hmacKey, 128/8);
 	
 	//Cleanup
 	close(inputFile);
@@ -153,17 +154,19 @@ int serverMain(short listeningPort, char* outputFilename)
 	int inEncryptedFile = open(relativeToAbsolutePath("inEncryptedFile"), O_RDWR | O_CREAT, 0666);
 	errorCheck(inEncryptedFile);
 
-	if( hmacReceive(communicationSocket, inEncryptedFile, ciphertextBlockCount, 1, hmacKey, 128/8) )
+	if( hmacReceive(communicationSocket, inEncryptedFile, ciphertextBlockCount, 4, hmacKey, 128/8) )
 	{
+		lseek(inEncryptedFile, 0, SEEK_SET);
+
 		int outputFile = open(relativeToAbsolutePath(outputFilename), O_WRONLY | O_CREAT, 0666);
 		errorCheck(outputFile);
 
-		decrypt(inEncryptedFile, outputFile, ciphertextBlockCount, 1, encryptionKey, iv);
+		decrypt(inEncryptedFile, outputFile, ciphertextBlockCount, 4, encryptionKey, iv);
 		close(outputFile);
 	}
 	else
 	{
-		printf("SECURITY ERROR: hmac is wrong!");
+		printf("SECURITY ERROR: hmac is wrong!\n");
 		return 0;
 	}
 

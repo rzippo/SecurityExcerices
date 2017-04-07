@@ -2,13 +2,13 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="main.c" />
-    <ClCompile Include="HMACTransfer.cpp">
-      <Filter>definitions</Filter>
-    </ClCompile>
     <ClCompile Include="tcpSetup.c">
       <Filter>definitions</Filter>
     </ClCompile>
     <ClCompile Include="DESTransfer.c">
+      <Filter>definitions</Filter>
+    </ClCompile>
+    <ClCompile Include="HMACTransfer.c">
       <Filter>definitions</Filter>
     </ClCompile>
   </ItemGroup>

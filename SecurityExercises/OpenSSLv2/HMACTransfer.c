@@ -25,16 +25,19 @@ void hmacSend(int sourceFD, int destinationFD, unsigned sourceByteCount, unsigne
 	HMAC_Init(hmacCtx, hmacKey, hmacKeyLength, EVP_md5());
 
 	unsigned blockLength = 128 / 8;
-	unsigned stepByteCount = blockLength * blocksPerStep;
+	unsigned maxStepByteCount = blockLength * blocksPerStep;
 
-	unsigned char transferBuffer[stepByteCount];
+	unsigned char transferBuffer[maxStepByteCount];
 
-	unsigned stepCount = (sourceByteCount % stepByteCount == 0) ? sourceByteCount / stepByteCount : (sourceByteCount / stepByteCount) + 1;
+	unsigned leftBytes = sourceByteCount;
+	unsigned stepCount = (sourceByteCount % maxStepByteCount == 0) ? sourceByteCount / maxStepByteCount : (sourceByteCount / maxStepByteCount) + 1;
 
 	for (unsigned currentStep = 0; currentStep < stepCount; currentStep++)
 	{
-		int readByteCount = (int) read(sourceFD, transferBuffer, stepByteCount);
+		int bytesToRead = (leftBytes > maxStepByteCount) ? maxStepByteCount : leftBytes;
+		int readByteCount = (int) read(sourceFD, transferBuffer, bytesToRead);
 		errorCheck(readByteCount);
+		leftBytes -= readByteCount;
 
 		HMAC_Update(hmacCtx, transferBuffer, readByteCount);
 
@@ -53,7 +56,7 @@ void hmacSend(int sourceFD, int destinationFD, unsigned sourceByteCount, unsigne
 	free(hmacCtx);
 }
 
-int hmacReceive(int sourceFD, int destinationFD, unsigned sourceBlockCount, unsigned blocksPerStep, const unsigned char* hmacKey, unsigned hmacKeyLength)
+int hmacReceive(int sourceFD, int destinationFD, unsigned sourceBlockCount, unsigned stepBlockCount, const unsigned char* hmacKey, unsigned hmacKeyLength)
 {
 	HMAC_CTX* hmacCtx = malloc(sizeof(HMAC_CTX));
 	HMAC_CTX_init(hmacCtx);
@@ -61,16 +64,19 @@ int hmacReceive(int sourceFD, int destinationFD, unsigned sourceBlockCount, unsi
 	HMAC_Init(hmacCtx, hmacKey, hmacKeyLength, EVP_md5());
 
 	unsigned blockLength = 128 / 8;
-	unsigned stepByteCount = blockLength * blocksPerStep;
+	unsigned maxStepByteCount = blockLength * stepBlockCount;
 
-	unsigned char transferBuffer[stepByteCount];
+	unsigned char transferBuffer[maxStepByteCount];
 
-	unsigned stepCount = (sourceBlockCount % blocksPerStep == 0) ? sourceBlockCount / blocksPerStep : (sourceBlockCount / blocksPerStep) + 1;
-
+	unsigned leftBytes = sourceBlockCount * stepBlockCount * blockLength;
+	unsigned stepCount = (sourceBlockCount % stepBlockCount == 0) ? sourceBlockCount / stepBlockCount : (sourceBlockCount / stepBlockCount) + 1;
+	
 	for (unsigned currentStep = 0; currentStep < stepCount; currentStep++)
 	{
-		int readByteCount = (int) read(sourceFD, transferBuffer, stepByteCount);
+		int bytesToRead = (leftBytes > maxStepByteCount) ? maxStepByteCount : leftBytes;
+		int readByteCount = (int) read(sourceFD, transferBuffer, bytesToRead);
 		errorCheck(readByteCount);
+		leftBytes -= readByteCount;
 
 		HMAC_Update(hmacCtx, transferBuffer, readByteCount);
 
@@ -83,12 +89,13 @@ int hmacReceive(int sourceFD, int destinationFD, unsigned sourceBlockCount, unsi
 	HMAC_Final(hmacCtx, computedDigestBuffer, &outlength);
 	
 	unsigned char receivedDigestBuffer[EVP_MD_size(EVP_md5())];
-	int readByteCount = read(destinationFD, receivedDigestBuffer, EVP_MD_size(EVP_md5()));
+	int readByteCount = read(sourceFD, receivedDigestBuffer, EVP_MD_size(EVP_md5()));
 	errorCheck(readByteCount);
 
 	//Cleanup
 	HMAC_CTX_cleanup(hmacCtx);
 	free(hmacCtx);
 
-	return !CRYPTO_memcmp(computedDigestBuffer, receivedDigestBuffer, EVP_MD_size(EVP_md5()));
+	int cmp = CRYPTO_memcmp(computedDigestBuffer, receivedDigestBuffer, EVP_MD_size(EVP_md5()));
+	return (cmp == 0) ? 1 : 0;
 }

@@ -66,6 +66,7 @@
     <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
     <RemoteCppCompileToolExe />
     <RemoteLdToolExe>gcc -lcrypto</RemoteLdToolExe>
+    <AdditionalSourcesToCopyMapping>input.txt</AdditionalSourcesToCopyMapping>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <IncludePath>
@@ -80,6 +81,7 @@
     <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
     <RemoteCppCompileToolExe />
     <RemoteLdToolExe>gcc -lcrypto</RemoteLdToolExe>
+    <AdditionalSourcesToCopyMapping>input.txt</AdditionalSourcesToCopyMapping>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>
@@ -94,6 +96,7 @@
     <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
     <RemoteCppCompileToolExe />
     <RemoteLdToolExe>gcc -lcrypto</RemoteLdToolExe>
+    <AdditionalSourcesToCopyMapping>input.txt</AdditionalSourcesToCopyMapping>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <IncludePath>
@@ -103,7 +106,7 @@
     <RemoteLdToolExe>gcc</RemoteLdToolExe>
   </PropertyGroup>
   <ItemGroup>
-    <ClCompile Include="HMACTransfer.cpp" />
+    <ClCompile Include="HMACTransfer.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="DESTransfer.c" />
     <ClCompile Include="tcpSetup.c" />
