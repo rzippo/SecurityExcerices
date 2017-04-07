@@ -65,7 +65,7 @@
     </IncludePath>
     <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
     <RemoteCppCompileToolExe />
-    <RemoteLdToolExe>gcc</RemoteLdToolExe>
+    <RemoteLdToolExe>gcc -lcrypto</RemoteLdToolExe>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <IncludePath>
@@ -79,7 +79,7 @@
     </IncludePath>
     <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
     <RemoteCppCompileToolExe />
-    <RemoteLdToolExe>gcc</RemoteLdToolExe>
+    <RemoteLdToolExe>gcc -lcrypto</RemoteLdToolExe>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>
@@ -93,7 +93,7 @@
     </IncludePath>
     <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
     <RemoteCppCompileToolExe />
-    <RemoteLdToolExe>gcc</RemoteLdToolExe>
+    <RemoteLdToolExe>gcc -lcrypto</RemoteLdToolExe>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <IncludePath>
@@ -103,12 +103,14 @@
     <RemoteLdToolExe>gcc</RemoteLdToolExe>
   </PropertyGroup>
   <ItemGroup>
+    <ClCompile Include="HMACTransfer.cpp" />
     <ClCompile Include="main.c" />
-    <ClCompile Include="SSLTransfer.c" />
+    <ClCompile Include="DESTransfer.c" />
     <ClCompile Include="tcpSetup.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SSLTransfer.h" />
+    <ClInclude Include="HMACTransfer.h" />
+    <ClInclude Include="DESTransfer.h" />
     <ClInclude Include="tcpSetup.h" />
   </ItemGroup>
   <ItemGroup>

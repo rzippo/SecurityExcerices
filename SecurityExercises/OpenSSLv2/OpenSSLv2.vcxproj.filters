@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.c" />
+    <ClCompile Include="HMACTransfer.cpp">
+      <Filter>definitions</Filter>
+    </ClCompile>
+    <ClCompile Include="tcpSetup.c">
+      <Filter>definitions</Filter>
+    </ClCompile>
+    <ClCompile Include="DESTransfer.c">
+      <Filter>definitions</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HMACTransfer.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="tcpSetup.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DESTransfer.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="input.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="headers">
+      <UniqueIdentifier>{576bbd38-63af-431c-ac3a-c2dc64076dd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="definitions">
+      <UniqueIdentifier>{b797e33f-c13b-40ca-82bb-b5d20483efbc}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
