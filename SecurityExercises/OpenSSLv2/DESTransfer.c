@@ -36,14 +36,14 @@ void encrypt(int sourceFD, int destinationFD, unsigned sourceByteCount, unsigned
 		int readByteCount = (int) read(sourceFD, plaintextStepBuffer, stepByteCount);
 		errorCheck(readByteCount);
 
-		unsigned int outlength;
+		int outlength;
 		EVP_EncryptUpdate(ctx, ciphertextStepBuffer, &outlength, plaintextStepBuffer, readByteCount);
 
 		int writeByteCount = (int) write(destinationFD, ciphertextStepBuffer, outlength);
 		errorCheck(writeByteCount);
 	}
 
-	unsigned int outlength;
+	int outlength;
 	EVP_EncryptFinal(ctx, ciphertextStepBuffer, &outlength);
 	int ret = write(destinationFD, ciphertextStepBuffer, outlength);
 	errorCheck(ret);
@@ -69,14 +69,14 @@ void decrypt(int sourceFD, int destinationFD, unsigned ciphertextBlockCount, uns
 		int readByteCount = (int) read(sourceFD, ciphertextStepBuffer, stepByteCount);
 		errorCheck(readByteCount);
 
-		unsigned int outlength;
+		int outlength;
 		EVP_DecryptUpdate(ctx, plaintextStepBuffer, &outlength, ciphertextStepBuffer, readByteCount);
 
 		int writeByteCount = (int) write(destinationFD, plaintextStepBuffer, outlength);
 		errorCheck(writeByteCount);
 	}
 
-	unsigned int outlength;
+	int outlength;
 	EVP_DecryptFinal(ctx, plaintextStepBuffer, &outlength);
 	int writeByteCount = write(destinationFD, plaintextStepBuffer, outlength);
 	errorCheck(writeByteCount);
