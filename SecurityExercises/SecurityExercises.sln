@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26228.9
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OTPBreaking", "OTPBreaking\OTPBreaking.vcxproj", "{FAA15FEF-A227-48D7-B207-CB2AFA8588CE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1-OTPBreaking", "OTPBreaking\OTPBreaking.vcxproj", "{FAA15FEF-A227-48D7-B207-CB2AFA8588CE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenSSLv1", "OpenSSLv1\OpenSSLv1.vcxproj", "{4CCFD7CD-D3D9-4D13-AC56-509620C66B08}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2-SSLEncryption", "OpenSSLv1\OpenSSLv1.vcxproj", "{4CCFD7CD-D3D9-4D13-AC56-509620C66B08}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenSSLv2", "OpenSSLv2\OpenSSLv2.vcxproj", "{99B55F5B-C062-4059-BC7D-888DB8E89984}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3-SSLHmac", "OpenSSLv2\OpenSSLv2.vcxproj", "{99B55F5B-C062-4059-BC7D-888DB8E89984}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4-SSLDHKeyAgreement", "OpenSSLv3\OpenSSLv3.vcxproj", "{5B67D082-8ACA-47BE-B87E-8EB1E3B11FA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,18 @@ Global
 		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Release|x64.Build.0 = Release|x64
 		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Release|x86.ActiveCfg = Release|x86
 		{99B55F5B-C062-4059-BC7D-888DB8E89984}.Release|x86.Build.0 = Release|x86
+		{5B67D082-8ACA-47BE-B87E-8EB1E3B11FA4}.Debug|ARM.ActiveCfg = Debug|ARM
+		{5B67D082-8ACA-47BE-B87E-8EB1E3B11FA4}.Debug|ARM.Build.0 = Debug|ARM
+		{5B67D082-8ACA-47BE-B87E-8EB1E3B11FA4}.Debug|x64.ActiveCfg = Debug|x64
+		{5B67D082-8ACA-47BE-B87E-8EB1E3B11FA4}.Debug|x64.Build.0 = Debug|x64
+		{5B67D082-8ACA-47BE-B87E-8EB1E3B11FA4}.Debug|x86.ActiveCfg = Debug|x86
+		{5B67D082-8ACA-47BE-B87E-8EB1E3B11FA4}.Debug|x86.Build.0 = Debug|x86
+		{5B67D082-8ACA-47BE-B87E-8EB1E3B11FA4}.Release|ARM.ActiveCfg = Release|ARM
+		{5B67D082-8ACA-47BE-B87E-8EB1E3B11FA4}.Release|ARM.Build.0 = Release|ARM
+		{5B67D082-8ACA-47BE-B87E-8EB1E3B11FA4}.Release|x64.ActiveCfg = Release|x64
+		{5B67D082-8ACA-47BE-B87E-8EB1E3B11FA4}.Release|x64.Build.0 = Release|x64
+		{5B67D082-8ACA-47BE-B87E-8EB1E3B11FA4}.Release|x86.ActiveCfg = Release|x86
+		{5B67D082-8ACA-47BE-B87E-8EB1E3B11FA4}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
