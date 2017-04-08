@@ -97,7 +97,7 @@ int clientMain(short serverPort, char* inputFilename)
 
 	write(communicationSocket, (void*)&ciphertextBlockCount, sizeof(ciphertextBlockCount));
 	
-	encrypt(inputFile, communicationSocket, inputSize, 4, key, iv);
+	encrypt(inputFile, communicationSocket, inputSize, 1, key, iv);
 	close(inputFile);
 
 	return 0;
@@ -126,7 +126,7 @@ int serverMain(short listeningPort, char* outputFilename)
 	int outputFile = open(relativeToAbsolutePath("output.txt"), O_WRONLY | O_CREAT, 0666);
 	errorCheck(outputFile);
 
-	decrypt(communicationSocket, outputFile, ciphertextBlockCount, 4, key, iv);
+	decrypt(communicationSocket, outputFile, ciphertextBlockCount, 1, key, iv);
 	close(outputFile);
 	close(communicationSocket);
 	
