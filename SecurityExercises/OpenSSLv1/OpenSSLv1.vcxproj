@@ -65,7 +65,7 @@
     </IncludePath>
     <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
     <RemoteCppCompileToolExe />
-    <RemoteLdToolExe>gcc</RemoteLdToolExe>
+    <RemoteLdToolExe>gcc -lcrypto</RemoteLdToolExe>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <IncludePath>
@@ -79,7 +79,7 @@
     </IncludePath>
     <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
     <RemoteCppCompileToolExe />
-    <RemoteLdToolExe>gcc</RemoteLdToolExe>
+    <RemoteLdToolExe>gcc -lcrypto</RemoteLdToolExe>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>
@@ -93,7 +93,7 @@
     </IncludePath>
     <RemoteCCompileToolExe>gcc -lcrypto </RemoteCCompileToolExe>
     <RemoteCppCompileToolExe />
-    <RemoteLdToolExe>gcc</RemoteLdToolExe>
+    <RemoteLdToolExe>gcc -lcrypto</RemoteLdToolExe>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <IncludePath>
@@ -129,7 +129,6 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <ClCompile>
-      <AdditionalOptions>-lcrypto </AdditionalOptions>
       <CppLanguageStandard>Default</CppLanguageStandard>
       <CompileAs>CompileAsC</CompileAs>
       <ThreadSafeStatics>No</ThreadSafeStatics>
