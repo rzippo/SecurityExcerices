@@ -71,11 +71,20 @@ static char* relativeToAbsolutePath(char* relative)
 	return buf;
 }
 
+void printKey(unsigned char* sharedKey)
+{
+	int fd = open(relativeToAbsolutePath("sharedKey"), O_WRONLY | O_CREAT, 0666);
+	write(fd, sharedKey, 512/8);
+	close(fd);
+}
+
 int clientMain(short serverPort, char* inputFilename)
 {
 	int communicationSocket = connectToServer(serverPort);
 
 	unsigned char* sharedKey = clientDHKeyAgreement(communicationSocket);
+	printKey(sharedKey);
+	
 	unsigned char* encryptionKey = sharedKey;
 	unsigned char* iv = sharedKey + 128/8;
 	unsigned char* hmacKey = sharedKey + 256/8;
@@ -115,7 +124,9 @@ int serverMain(short listeningPort, char* outputFilename)
 {
 	int communicationSocket = waitClientConnection(listeningPort);
 
-	unsigned char* sharedKey = clientDHKeyAgreement(communicationSocket);
+	unsigned char* sharedKey = serverDHKeyAgreement(communicationSocket);
+	printKey(sharedKey);
+
 	unsigned char* encryptionKey = sharedKey;
 	unsigned char* iv = sharedKey + 128/8;
 	unsigned char* hmacKey = sharedKey + 256/8;
